@@ -25,6 +25,7 @@ interface Project {
 const projects: Project[] = [
     {
         name: "Explore",
+        hidden:true,
         order: 18,
         type:ProjectType.ILLUSTRATION
     },
@@ -63,7 +64,7 @@ const projects: Project[] = [
     },
     {
         name: "Gilles Massé website",
-        order: 4,
+        order: 5,
         type:ProjectType.UIUX,
         content: {
             fullType: "UI / UX - Redesign",
@@ -79,7 +80,7 @@ const projects: Project[] = [
     },
     {
         name: "Square Room",
-        order: 5,
+        order: 6,
         type:ProjectType.GRAPHIC,
         content: {
             fullType: "Graphic Design",
@@ -95,8 +96,9 @@ const projects: Project[] = [
     },
     {
         name:"Intuitive Robot",
-        order: 6,
-        type:ProjectType.AUDIOVISUAL,
+        order: 7,
+        hidden: true,
+        type:ProjectType.REMOVED,
         url:"https://vimeo.com/313771129",
         urlType: LinkType.VIDEO,
         content: {
@@ -112,17 +114,17 @@ const projects: Project[] = [
     },
     {
         name: "Bestiary",
-        order: 7,
-        type:ProjectType.ILLUSTRATION
-    },
-    {
-        name: "Ray",
         order: 8,
         type:ProjectType.ILLUSTRATION
     },
     {
-        name: "Splash light",
+        name: "Ray",
         order: 9,
+        type:ProjectType.ILLUSTRATION
+    },
+    {
+        name: "Splash light",
+        order: 10,
         type:ProjectType.GAME,
         url:"https://youtu.be/E7Dmd5YXlgQ",
         urlType: LinkType.VIDEO,
@@ -139,8 +141,9 @@ const projects: Project[] = [
     },
     {
         name: "Patatap",
-        order: 10,
-        type:ProjectType.AUDIOVISUAL,
+        order: 11,
+        hidden: true,
+        type:ProjectType.REMOVED,
         url:"https://ateliernum.github.io/projet_patatap_1819/Herlem_Juliette/index.html",
         urlType: LinkType.PROTOTYPE_DESKTOP,
         content: {
@@ -157,7 +160,7 @@ const projects: Project[] = [
     },
     {
         name: "Together",
-        order: 11,
+        order: 12,
         type:ProjectType.GAME,
         url:"https://youtu.be/Z7zpWL3cr5k",
         urlType: LinkType.VIDEO,
@@ -231,6 +234,7 @@ const projects: Project[] = [
     },
     {
         name: "Wrath",
+        hidden:true,
         order: 16,
         type:ProjectType.ILLUSTRATION
     },
@@ -241,7 +245,7 @@ const projects: Project[] = [
     },
     {
         name: "Comapper",
-        order: 1,
+        order: 3,
         type:ProjectType.UIUX,
         url:"https://www.figma.com/proto/OwjjvdOa8MGLxHb99lReP4/Co'Mapper?page-id=0%3A1&node-id=3%3A5130&viewport=1448%2C373%2C0.08&scaling=scale-down&starting-point-node-id=3%3A5078",
         urlType: LinkType.PROTOTYPE,
@@ -279,7 +283,86 @@ const projects: Project[] = [
             pagePic: "/pagePic/EffetPapillon.jpg",
             button: "Download the print version"
         }
+    },
+    {
+        name: "Wizart",
+        order: 1,
+        type:ProjectType.UIUX,
+        url:"https://www.wizart-by-artelia.com/",
+        urlType: LinkType.WEBSITE,
+        content: {
+            fullType: "UI / UX",
+            desc: "A platform aimed at supporting asset managers and their stakeholders in achieving efficient and sustainable management throughout the lifecycle of their assets.",
+            mission: "UI UX Design, Illustration, iconography, UX research, development of the design system.",
+            date: "September 2022 | 2 year",
+            techno: [
+                "/techIcon/figma.png",
+                "/techIcon/illustrator.jpg",
+                "/techIcon/miro.png",
+                "/techIcon/gitlab.png"
+            ],
+            pagePic: "/pagePic/Wizart.png",
+        }
+    },
+    {
+        name: "Band of Boats",
+        order: 2,
+        type:ProjectType.UIUX,
+        url:"https://www.bandofboats.com/en",
+        urlType: LinkType.WEBSITE,
+        content: {
+            fullType: "UI / UX",
+            desc: "Band of Boats is a digital marketplace for the sale of new or used boats, catering to both individuals and professionals, and serving as a community platform within the nautical sector.",
+            mission: "Role of UI/UX Designer and Product Owner Assistant",
+            date: "February 2022 | 6 months",
+            techno: [
+                "/techIcon/figma.png",
+                "/techIcon/illustrator.jpg",
+                "/techIcon/balsamiq.png",
+                "/techIcon/notion.png"
+            ],
+            pagePic: "/pagePic/BandofBoats.png",
+        }
+    },
+    {
+        name: "Hablerys",
+        order: 21,
+        type:ProjectType.GAME,
+        content: {
+            fullType: "UI / UX",
+            desc: "We developed Hablerys in 2 days during the Global Game Jam 2024. The objective of this card game is to make the king laugh to avoid dying in excruciating pain.",
+            mission: "UX and graphic design, game design and character design in team.",
+            date: "January 2024 | 2 days | 6 co-workers",
+            techno: [
+                "/techIcon/figma.png",
+                "/techIcon/procreate.png",
+                "/techIcon/notion.png",
+                "/techIcon/miro.png"
+            ],
+            pagePic: "/pagePic/Hablerys.png",
+        }
+    },
+    {
+        name: "Iso-house",
+        order: 23,
+        type:ProjectType.ILLUSTRATION
+    },
+    {
+        name: "Guts",
+        order: 24,
+        type:ProjectType.ILLUSTRATION
+    },
+    {
+        name: "Beetle",
+        order: 25,
+        type:ProjectType.ILLUSTRATION
+    },
+    {
+        name: "Link",
+        order: 26,
+        type:ProjectType.ILLUSTRATION
     }
+    
 ];
 
 export default projects;

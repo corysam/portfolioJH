@@ -56,7 +56,7 @@ export const Home: React.FC<HomeProp> = () => {
                         I’m a UI/UX designer based in France. 
                       </Typography>
                   </Grid>
-                  <Grid item container spacing={2}>
+                  <Grid item container spacing={1}>
                     <ContactIcon
                       alt="linkedin-icon"
                       src={iconLinkedin}

@@ -86,9 +86,9 @@ export const AboutMe: React.FC<AboutMeProp> = () => {
             </Grid>
             <Grid item>
               <Typography className={classes.interestText}>
-                Actually in my last year completing a Master's degree in Media Design.<br/>
-                Diploma in Animation and Illustration (Master).<br/>
-                Bachelor's degree in interaction design
+              Master's degree in Media Design.<br/>
+              Bachelor's degree in interaction design <br/>
+              Diploma in Animation and Illustration (Master).
               </Typography>
             </Grid>
           </Grid>
@@ -177,7 +177,7 @@ export const AboutMe: React.FC<AboutMeProp> = () => {
             variant="contained"
             onClick={() => {
               const link = document.createElement("a");
-              link.download = `portfolio-Juliette-Herlem.pdf`;
+              link.download = `CV-Juliette-Herlem.pdf`;
               link.href = "./cvporfolio.pdf";
               link.click();
             }}

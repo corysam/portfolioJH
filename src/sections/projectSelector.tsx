@@ -2,7 +2,7 @@ import { Typography, useMediaQuery, useTheme } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles";
 import { Grid, Link, Stack, Theme } from "@mui/material";
 import { Box } from "@mui/system"
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BootstrapButton } from "../components/MyButton";
 import { ProjectCard } from "../components/ProjectCard";
 import projects from "../constants/projects";
@@ -37,7 +37,7 @@ export const ProjectSelector: React.FC<projectSelectorProp> = () => {
   const classes = useStyles();
   const theme = useTheme();
   const desktop = useMediaQuery(theme.breakpoints.up('lg'))
-  
+
   const handlerChangeType = ( projectType: ProjectType ) => {
     setProjectType(projectType);
   }
@@ -83,14 +83,14 @@ export const ProjectSelector: React.FC<projectSelectorProp> = () => {
           }}>
           <Stack spacing={7} direction="row" justifyContent="center">
             <Typography variant="subtitle1">
-              <Link onClick={() => {setProjectType(ProjectType.UIUX); setSelectEverything(false);}} component="button" color="inherit" underline="hover" variant="inherit" className={classes.selectorLinks}>UI/UX</Link>
+              <Link onClick={() => {setProjectType(ProjectType.UIUX); setSelectEverything(false);}} component="button" color="inherit" underline="hover" variant="inherit" className={classes.selectorLinks} >UI/UX</Link>
             </Typography>
             <Typography variant="subtitle1">
               <Link onClick={() => {setProjectType(ProjectType.GRAPHIC); setSelectEverything(false);}} component="button" color="inherit" underline="hover" variant="inherit" className={classes.selectorLinks}>Graphic</Link>
             </Typography>
-            <Typography variant="subtitle1">
+            {/* <Typography variant="subtitle1">
               <Link onClick={() => {setProjectType(ProjectType.AUDIOVISUAL); setSelectEverything(false);}} component="button" color="inherit" underline="hover" variant="inherit" className={classes.selectorLinks}>Audiovisual</Link>
-            </Typography>
+            </Typography> */}
             <Typography variant="subtitle1">
               <Link onClick={() => {setProjectType(ProjectType.ILLUSTRATION); setSelectEverything(false);}} component="button" color="inherit"  underline="hover" variant="inherit" className={classes.selectorLinks}>Illustration</Link>
               </Typography>
@@ -114,14 +114,14 @@ export const ProjectSelector: React.FC<projectSelectorProp> = () => {
                   <Link onClick={() => {setProjectType(ProjectType.GRAPHIC); setSelectEverything(false);}} component="button" color="inherit" underline="hover" variant="inherit" className={classes.selectorLinks}>Graphic</Link>
                 </Typography>
               </Grid >
-              <Grid item xs={12} sm={4}>
+              {/* <Grid item xs={12} sm={4}>
                 <Typography variant="subtitle1">
                   <Link onClick={() => {setProjectType(ProjectType.AUDIOVISUAL); setSelectEverything(false);}} component="button" color="inherit" underline="hover" variant="inherit" className={classes.selectorLinks}>Audiovisual</Link>
                 </Typography>
-              </Grid>
+              </Grid> */}
               <Grid item xs={12} sm={4}>
                 <Typography variant="subtitle1">
-                  <Link onClick={() => {setProjectType(ProjectType.AUDIOVISUAL); setSelectEverything(false);}} component="button" color="inherit" underline="hover" variant="inherit" className={classes.selectorLinks}>Audiovisual</Link>
+                  <Link onClick={() => {setProjectType(ProjectType.ILLUSTRATION); setSelectEverything(false);}} component="button" color="inherit" underline="hover" variant="inherit" className={classes.selectorLinks}>Illustration</Link>
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={4}>

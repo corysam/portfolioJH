@@ -154,7 +154,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         onBackdropClick={handleClose}
       >
       <Box className={desktop ? classes.illustrationsDesktop : classes.illustrationsMobile}>
-          <Img alt="illlustration" src={`illustrations/illustration-${index}.jpg`}/>
+          <Img alt="illlustration" src={`${process.env.NODE_ENV === 'development' ? `http://localhost:3000/julietteherlem/illustrations/illustration-${index}.jpg` : `illustrations/illustration-${index}.jpg`}`}/>
       </Box>
       </Modal>
     </Grid>

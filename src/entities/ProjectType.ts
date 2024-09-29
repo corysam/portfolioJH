@@ -1,7 +1,8 @@
 export enum ProjectType {
     UIUX = "UI / UX",
     GRAPHIC = "Graphic",
-    AUDIOVISUAL = "Audiovisual",
+    // AUDIOVISUAL = "Audiovisual",
     ILLUSTRATION = "Illustration",
-    GAME = "Game"
+    GAME = "Game",
+    REMOVED = "",
 }

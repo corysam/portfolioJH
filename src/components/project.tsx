@@ -90,7 +90,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = () => {
         <Stack direction="row" spacing={1} className={classes.goBackButton} >
           <img alt="GoBackPic" style={{width:"1.56vw", height:"2.778vh"}} src={isDarkMode ? goBackPicDark : goBackPicLight}/>
           <Typography style={{marginTop:"0.5vh"}} className={classes.projectDesc}>
-              Go back to work
+              Back
           </Typography>
         </Stack>
       </Lien>
@@ -119,7 +119,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = () => {
         <Typography className={classes.projectDesc} style={{marginBottom:"5.46vh", fontFamily:"Corbel, sans-serif" ,fontWeight:300}}>
             {content?.date}
         </Typography>
-        <Stack direction="row" justifyContent="start" spacing={1}>
+        <Stack direction="row" justifyContent="start" spacing={3}>
             {content?.techno.map((elem) => (
             <Img src={process.env.PUBLIC_URL + elem} style={{maxWidth:"2.16vw", maxHeight: "3.8vh"}}/>
             ))}
@@ -136,7 +136,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = () => {
       <Img alt="projectPic" style={{maxWidth:"82.41vw", maxHeight: "52.5vh"}} src={`${process.env.PUBLIC_URL}/thumbails/subnail-${index}.png`} className={classes.projectImgDesktop}/>
     </Box>
   <Box className={classes.pagePic}>
-    <Img style={{maxWidth:"100vw"}}  src={process.env.PUBLIC_URL + content?.pagePic}/>
+    <Img style={{width:"100%"}}  src={process.env.PUBLIC_URL + content?.pagePic}/>
   </Box>
   </div>
   : 
@@ -145,7 +145,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = () => {
         <Stack direction="row" spacing={1} className={classes.goBackButton} >
           <img alt="GoBackPic" style={{width:"40px", height:"40px"}} src={isDarkMode ? goBackPicDark : goBackPicLight}/>
           <Typography className={classes.projectDesc}>
-              Go back to work
+              Back
           </Typography>
         </Stack>
       </Lien>
@@ -175,7 +175,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = () => {
             {content?.date}
         </Typography>
         <Img alt="projectPic" style={{width:"100%", marginBottom:"3vh"}} src={`${process.env.PUBLIC_URL}/thumbails/subnail-${index}.png`} className={classes.projectImgMobile}/>
-        <Stack direction="row" justifyContent="start" spacing={6}>
+        <Stack direction="row" justifyContent="start" spacing={5}>
             {content?.techno.map((elem) => (
             <Img src={process.env.PUBLIC_URL + elem} style={{width:"10%"}}/>
             ))}
