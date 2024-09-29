@@ -6,7 +6,7 @@ export interface ContactIconProps {
     alt: string
     link?: string
     style: React.CSSProperties;
-    children: ReactNode
+    children?: ReactNode
 }
 
 export const ContactIcon: React.FC<ContactIconProps> = ({

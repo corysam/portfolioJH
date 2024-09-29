@@ -69,8 +69,9 @@ export const ProjectPage: React.FC<ProjectPageProps> = () => {
     const index: number = +id!;
     const classes = useStyles();
     var {name, type} = projects[index];
+    var url = null;
     if (projects[index].url)
-    var url = projects[index].url;
+      url = projects[index].url;
     if (type !== ProjectType.ILLUSTRATION)
       var content = projects[index].content;
     var mobilePagePic = content?.pagePic;

@@ -33,11 +33,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const ProjectSelector: React.FC<projectSelectorProp> = () => {
   const [selectEverything, setSelectEverything] = useState(false);
-  const [projectType, setProjectType] = useState<ProjectType | "">("");
+  const [projectType, setProjectType] = useState<ProjectType | "">(ProjectType.UIUX);
   const classes = useStyles();
   const theme = useTheme();
   const desktop = useMediaQuery(theme.breakpoints.up('lg'))
   
+  const handlerChangeType = ( projectType: ProjectType ) => {
+    setProjectType(projectType);
+  }
+
   var projectIndex: number[] = [];
   if (!projectType)
     projectIndex = Array.from(Array(projects.length).keys());
@@ -56,7 +60,7 @@ export const ProjectSelector: React.FC<projectSelectorProp> = () => {
   })
   projectIndex = projectIndex.filter(index => !projects[index].hidden)
   if (!selectEverything)
-    projectIndex = projectIndex.slice(0,4);
+    projectIndex = projectIndex.filter(index => projects[index].type === projectType);
     return (
     <div
       id="Project-Selector"
