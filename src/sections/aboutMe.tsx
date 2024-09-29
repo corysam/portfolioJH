@@ -155,9 +155,9 @@ export const AboutMe: React.FC<AboutMeProp> = () => {
             </Grid>
             <Grid item xs={10}>
               <Typography className={classes.interestText}>
-              Actually in my last year completing a Master's degree in Media Design.<br/>
-                Diploma in Animation and Illustration (Master).<br/>
-                Bachelor's degree in interaction design
+              Master's degree in Media Design.<br/>
+              Bachelor's degree in interaction design <br/>
+              Diploma in Animation and Illustration (Master).
               </Typography>
             </Grid>
           </Grid>
