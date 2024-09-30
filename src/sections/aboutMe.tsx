@@ -108,7 +108,7 @@ export const AboutMe: React.FC<AboutMeProp> = () => {
             variant="contained"
             onClick={() => {
               const link = document.createElement("a");
-              link.download = `portfolio-Juliette-Herlem.pdf`;
+              link.download = `CV-Juliette-Herlem.pdf`;
               link.href = "./cvportfolio.pdf";
               link.click();
             }}
@@ -178,7 +178,7 @@ export const AboutMe: React.FC<AboutMeProp> = () => {
             onClick={() => {
               const link = document.createElement("a");
               link.download = `CV-Juliette-Herlem.pdf`;
-              link.href = "./cvporfolio.pdf";
+              link.href = "./cvportfolio.pdf";
               link.click();
             }}
           >
