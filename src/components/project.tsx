@@ -165,10 +165,10 @@ export const ProjectPage: React.FC<ProjectPageProps> = () => {
         <Typography variant="subtitle1" style={{marginBottom:"2.31vh"}}>
           {content?.fullType}
         </Typography>
-        <Typography className={classes.projectDesc} style={{marginBottom:"0.74vh"}}>
+        <Typography className={classes.projectDesc} style={{marginBottom:"2vh"}}>
             {content?.desc}
         </Typography>
-        <Typography component="div" className={classes.projectDesc} style={{marginBottom:"0.833vh"}}>
+        <Typography component="div" className={classes.projectDesc} style={{marginBottom:"2vh"}}>
             <Box display="inline" fontFamily="Corbel_bold, sans-serif" fontWeight={700}>My mission : </Box>{content?.mission}
         </Typography>
         <Typography className={classes.projectDesc} style={{marginBottom:"5.46vh", fontFamily:"Corbel, sans-serif" ,fontWeight:300}}>

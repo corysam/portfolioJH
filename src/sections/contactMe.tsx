@@ -113,7 +113,7 @@ export const ContactMe: React.FC<ContactMeProp> = () => {
                         If you have any inquiries,<br/> I would be happy to hear you !
                       </Typography>
                   </Grid>
-                  <Grid item container spacing={2}>
+                  <Grid item container spacing={1}>
                     <ContactIcon
                       alt="linkedin-icon"
                       src={iconLinkedin}

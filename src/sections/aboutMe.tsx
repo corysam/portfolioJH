@@ -87,7 +87,7 @@ export const AboutMe: React.FC<AboutMeProp> = () => {
             <Grid item>
               <Typography className={classes.interestText}>
               Master's degree in Media Design.<br/>
-              Bachelor's degree in interaction design <br/>
+              Bachelor's degree in interaction design.<br/>
               Diploma in Animation and Illustration (Master).
               </Typography>
             </Grid>
@@ -135,7 +135,7 @@ export const AboutMe: React.FC<AboutMeProp> = () => {
           UI/UX Designer
         </Typography>
         <Typography className={classes.aboutMeDesc} style={{marginBottom:"5.46vh"}}>
-          I'm a multidisciplinary digital designer, based in France,<br/>
+          I'm a multidisciplinary digital designer, based in France,
           focused on UI/UX design and Illustration.
         </Typography>
         <Grid container alignItems="center" rowSpacing={3}>
@@ -156,7 +156,7 @@ export const AboutMe: React.FC<AboutMeProp> = () => {
             <Grid item xs={10}>
               <Typography className={classes.interestText}>
               Master's degree in Media Design.<br/>
-              Bachelor's degree in interaction design <br/>
+              Bachelor's degree in interaction design.<br/>
               Diploma in Animation and Illustration (Master).
               </Typography>
             </Grid>

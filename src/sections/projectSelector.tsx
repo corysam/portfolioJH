@@ -92,11 +92,11 @@ export const ProjectSelector: React.FC<projectSelectorProp> = () => {
               <Link onClick={() => {setProjectType(ProjectType.AUDIOVISUAL); setSelectEverything(false);}} component="button" color="inherit" underline="hover" variant="inherit" className={classes.selectorLinks}>Audiovisual</Link>
             </Typography> */}
             <Typography variant="subtitle1">
-              <Link onClick={() => {setProjectType(ProjectType.ILLUSTRATION); setSelectEverything(false);}} component="button" color="inherit"  underline="hover" variant="inherit" className={classes.selectorLinks}>Illustration</Link>
-              </Typography>
-            <Typography variant="subtitle1">
               <Link onClick={() => {setProjectType(ProjectType.GAME); setSelectEverything(false);}} component="button" color="inherit"  underline="hover" variant="inherit" className={classes.selectorLinks}>Game</Link>
             </Typography>
+            <Typography variant="subtitle1">
+              <Link onClick={() => {setProjectType(ProjectType.ILLUSTRATION); setSelectEverything(false);}} component="button" color="inherit"  underline="hover" variant="inherit" className={classes.selectorLinks}>Illustration</Link>
+              </Typography>
           </Stack>
           </Box> :
           <Box sx={{
@@ -121,12 +121,12 @@ export const ProjectSelector: React.FC<projectSelectorProp> = () => {
               </Grid> */}
               <Grid item xs={12} sm={4}>
                 <Typography variant="subtitle1">
-                  <Link onClick={() => {setProjectType(ProjectType.ILLUSTRATION); setSelectEverything(false);}} component="button" color="inherit" underline="hover" variant="inherit" className={classes.selectorLinks}>Illustration</Link>
+                  <Link onClick={() => {setProjectType(ProjectType.GAME); setSelectEverything(false);}} component="button" color="inherit"  underline="hover" variant="inherit" className={classes.selectorLinks}>Game</Link>
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={4}>
                 <Typography variant="subtitle1">
-                  <Link onClick={() => {setProjectType(ProjectType.GAME); setSelectEverything(false);}} component="button" color="inherit"  underline="hover" variant="inherit" className={classes.selectorLinks}>Game</Link>
+                  <Link onClick={() => {setProjectType(ProjectType.ILLUSTRATION); setSelectEverything(false);}} component="button" color="inherit" underline="hover" variant="inherit" className={classes.selectorLinks}>Illustration</Link>
                 </Typography>
               </Grid>
             </Grid>
