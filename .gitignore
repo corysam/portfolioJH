@@ -1,0 +1,35 @@
+# root
+node_modules
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env (only commit .env.example anywhere)
+.env*
+!.env.example
+
+# Web (apps/web)
+apps/web/.next
+apps/web/out
+apps/web/build
+apps/web/coverage
+apps/web/node_modules
+apps/web/next-env.d.ts
+apps/web/*.tsbuildinfo
+apps/web/.vercel
+
+# Strapi (apps/cms)
+apps/cms/node_modules
+apps/cms/.cache
+apps/cms/build
+apps/cms/dist
+apps/cms/.tmp
+apps/cms/.strapi
+apps/cms/types/generated
+apps/cms/public/uploads/*
+!apps/cms/public/uploads/.gitkeep

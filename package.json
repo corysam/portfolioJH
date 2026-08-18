@@ -1,0 +1,22 @@
+{
+  "name": "nouveau-portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "postinstall": "npm --prefix apps/web install && npm --prefix apps/cms install",
+    "dev": "concurrently -k -n web,cms -c blue,green \"npm --prefix apps/web run dev\" \"npm --prefix apps/cms run develop\"",
+    "dev:web": "npm --prefix apps/web run dev",
+    "dev:cms": "npm --prefix apps/cms run develop",
+    "build": "npm --prefix apps/web run build && npm --prefix apps/cms run build",
+    "build:web": "npm --prefix apps/web run build",
+    "build:cms": "npm --prefix apps/cms run build",
+    "start": "concurrently -k -n web,cms -c blue,green \"npm --prefix apps/web run start\" \"npm --prefix apps/cms run start\"",
+    "lint": "npm --prefix apps/web run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  }
+}

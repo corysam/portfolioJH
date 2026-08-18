@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "5. Footer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "partnersTitle": {
+      "type": "string"
+    },
+    "copyrightTextBefore": {
+      "type": "string"
+    },
+    "copyrightTextAfter": {
+      "type": "string"
+    },
+    "partners": {
+      "type": "component",
+      "component": "shared.partner",
+      "repeatable": true
+    }
+  }
+}

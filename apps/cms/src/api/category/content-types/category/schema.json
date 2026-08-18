@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "categoryColor": {
+      "type": "string",
+      "customField": "plugin::color-picker.color",
+      "default": "#5A7A5E"
+    },
+    "categoryTextColor": {
+      "type": "string",
+      "customField": "plugin::color-picker.color",
+      "default": "#F5E6D3"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "categories"
+    }
+  }
+}

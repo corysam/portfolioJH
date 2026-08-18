@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_shared_tag_labels",
+  "info": {
+    "displayName": "Tag Label",
+    "icon": "bookmark"
+  },
+  "options": {},
+  "attributes": {
+    "label": { "type": "string", "required": true }
+  }
+}

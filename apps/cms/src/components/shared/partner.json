@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_partners",
+  "info": {
+    "displayName": "Partner",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "name": { "type": "string", "required": true },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

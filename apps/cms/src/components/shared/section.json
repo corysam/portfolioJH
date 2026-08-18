@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_shared_sections",
+  "info": {
+    "displayName": "Section",
+    "icon": "layout"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "content": { "type": "blocks" },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

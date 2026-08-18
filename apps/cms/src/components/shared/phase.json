@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_phases",
+  "info": {
+    "displayName": "Phase",
+    "icon": "list"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "description": { "type": "blocks" }
+  }
+}
