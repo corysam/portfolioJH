@@ -13,12 +13,28 @@ interface ProjectCardProps {
   onProjectClick: () => void;
 }
 
-// Deterministic per-card rotation seeded by the project id (string or numeric).
-function getRotation(id: string): number {
+// Deterministic per-card hash seeded by the project id (string or numeric).
+function hashId(id: string): number {
   let hash = 0;
   for (let i = 0; i < id.length; i++) hash = (hash * 31 + id.charCodeAt(i)) & 0xffff;
-  const angle = 0.8 + (hash % 70) / 100; // 0.80 → 1.50
-  return hash % 2 === 0 ? angle : -angle;
+  return hash;
+}
+
+// Le sens de l'inclinaison suit la position (gauche, droite, gauche, ...) pour
+// garantir l'alternance visuelle, tandis que l'amplitude vient du hash de l'id :
+// deux cartes penchées du même côté n'ont jamais exactement le même angle.
+function getRotation(id: string, index: number): number {
+  const angle = 0.8 + (hashId(id) % 70) / 100; // 0.80 → 1.50
+  return index % 2 === 0 ? -angle : angle;
+}
+
+// One of the four hand-drawn border shapes (see globals.css), picked
+// deterministically so adjacent cards wobble differently but SSR and the
+// client always agree.
+const SKETCH_VARIANTS = ['sketch-frame', 'sketch-frame-2', 'sketch-frame-3', 'sketch-frame-4'];
+
+function getSketchBorder(id: string): string {
+  return SKETCH_VARIANTS[hashId(id) % SKETCH_VARIANTS.length];
 }
 
 export function ProjectCard({
@@ -36,7 +52,8 @@ export function ProjectCard({
     }
   };
 
-  const rotation = getRotation(project.id);
+  const rotation = getRotation(project.id, index);
+  const sketchBorder = getSketchBorder(project.id);
   const teaser = richTextToPlainText(project.description);
 
   return (
@@ -51,12 +68,12 @@ export function ProjectCard({
     >
       <motion.div
         onClick={handleClick}
-        whileHover={{ y: -8, rotate: rotation + 1, transition: { duration: 0.3 } }}
+        whileHover={{ y: -8, rotate: rotation * 0.25, transition: { duration: 0.3 } }}
         style={{ rotate: rotation }}
-        className="bg-[#001616] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-4 border-[#63746B] h-full flex flex-col cursor-pointer"
+        className={`bg-[#001616] ${sketchBorder} overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-[#63746B] h-full flex flex-col cursor-pointer`}
       >
         <div className="aspect-[4/3] overflow-hidden bg-neutral-300 dark:bg-neutral-700 relative">
-          <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.6, ease: 'easeOut' }} className="w-full h-full relative">
+          <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.6, ease: 'easeOut' }} className="w-full h-full relative">
             <Image
               src={project.image}
               alt={project.title}

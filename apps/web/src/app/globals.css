@@ -170,51 +170,51 @@
 @layer base {
   :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
     h1 {
-      font-size: var(--text-2xl);
-      font-weight: 700;
-      line-height: 1.2;
+   font-size: var(--text-2xl);
+   font-weight: 700;
+   line-height: 1.2;
     }
 
     h2 {
-      font-size: var(--text-xl);
-      font-weight: 700;
-      line-height: 1.3;
+   font-size: var(--text-xl);
+   font-weight: 700;
+   line-height: 1.3;
     }
 
     h3 {
-      font-size: var(--text-lg);
-      font-weight: 600;
-      line-height: 1.4;
+   font-size: var(--text-lg);
+   font-weight: 600;
+   line-height: 1.4;
     }
 
     h4 {
-      font-size: var(--text-base);
-      font-weight: 600;
-      line-height: 1.5;
+   font-size: var(--text-base);
+   font-weight: 600;
+   line-height: 1.5;
     }
 
     p {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-normal);
-      line-height: 1.6;
+   font-size: var(--text-base);
+   font-weight: var(--font-weight-normal);
+   line-height: 1.6;
     }
 
     label {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
+   font-size: var(--text-base);
+   font-weight: var(--font-weight-medium);
+   line-height: 1.5;
     }
 
     button {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
+   font-size: var(--text-base);
+   font-weight: var(--font-weight-medium);
+   line-height: 1.5;
     }
 
     input {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-normal);
-      line-height: 1.5;
+   font-size: var(--text-base);
+   font-weight: var(--font-weight-normal);
+   line-height: 1.5;
     }
   }
 }
@@ -253,4 +253,75 @@ html {
 
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   Hand-drawn ("sketch") frames (.sketch-frame*)
+
+   Two ingredients working together:
+
+   · border-radius, as four horizontal/vertical pairs. All eight radii stay
+     inside a narrow band (2.3–2.75rem) so every corner reads as the same
+     size; only the h/v mismatch inside each corner wobbles, which keeps the
+     shape irregular without one corner looking clipped and another bulging.
+     This is also what clips the image, so it has to stay a real radius.
+
+   · a different border-width per side. A uniform stroke is the giveaway of
+     a machine-drawn box — real pen strokes swell and thin. Browsers
+     interpolate the width along each corner arc, so unequal sides produce a
+     stroke that tapers continuously around the frame. Widths are multiples
+     of --sketch-stroke (0.72×–1.35×, average ≈1×), so a caller can rescale
+     the whole thing by setting --sketch-stroke; the border *colour* still
+     comes from the element.
+
+   Defined outside @layer on purpose: unlayered rules beat Tailwind's utilities
+   layer, so these override a leftover rounded-* on the same element.
+
+   Use the numbered frame variants on neighbouring elements so no two boxes
+   wobble identically.
+   --------------------------------------------------------------------------- */
+.sketch-frame,
+.sketch-frame-2,
+.sketch-frame-3,
+.sketch-frame-4 {
+  --sketch-stroke: 4px;
+  border-style: solid;
+}
+
+/* Each variant thickens a different pair of sides, so neighbouring cards don't
+   share the same "pressure point". */
+.sketch-frame {
+  border-radius: 2.75rem 2.30rem 2.55rem 2.40rem / 2.35rem 2.70rem 2.40rem 2.60rem;
+  border-width:
+    calc(var(--sketch-stroke) * 1.30)
+    calc(var(--sketch-stroke) * 0.72)
+    calc(var(--sketch-stroke) * 1.05)
+    calc(var(--sketch-stroke) * 0.85);
+}
+
+.sketch-frame-2 {
+  border-radius: 2.40rem 2.65rem 2.30rem 2.60rem / 2.70rem 2.35rem 2.60rem 2.30rem;
+  border-width:
+    calc(var(--sketch-stroke) * 0.78)
+    calc(var(--sketch-stroke) * 1.28)
+    calc(var(--sketch-stroke) * 0.90)
+    calc(var(--sketch-stroke) * 1.10);
+}
+
+.sketch-frame-3 {
+  border-radius: 2.60rem 2.45rem 2.70rem 2.30rem / 2.45rem 2.60rem 2.35rem 2.65rem;
+  border-width:
+    calc(var(--sketch-stroke) * 1.12)
+    calc(var(--sketch-stroke) * 0.82)
+    calc(var(--sketch-stroke) * 1.35)
+    calc(var(--sketch-stroke) * 0.76);
+}
+
+.sketch-frame-4 {
+  border-radius: 2.30rem 2.60rem 2.45rem 2.70rem / 2.60rem 2.35rem 2.65rem 2.45rem;
+  border-width:
+    calc(var(--sketch-stroke) * 0.85)
+    calc(var(--sketch-stroke) * 1.05)
+    calc(var(--sketch-stroke) * 0.75)
+    calc(var(--sketch-stroke) * 1.30);
 }

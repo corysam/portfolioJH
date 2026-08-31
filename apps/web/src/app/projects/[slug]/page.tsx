@@ -2,10 +2,12 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ExternalLink, Target, Trophy } from 'lucide-react';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { RichText } from '@/components/RichText';
+import { TargetIcon } from '@/components/TargetIcon';
+import { TrophyIcon } from '@/components/TrophyIcon';
 import { DEFAULT_CATEGORY_COLOR } from '@/lib/category-colors';
 import { getFooter, getHeader, getProject, getProjects } from '@/lib/content';
 import { hasRichText, richTextToPlainText } from '@/lib/rich-text';
@@ -71,7 +73,7 @@ export default async function ProjectPage({
       <Header header={header} />
       <div className="min-h-screen bg-white dark:bg-[#001616]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="pt-24 pb-20">
+          <div className="pt-30 pb-20">
             <Link
               href="/#work"
               className="inline-flex items-center gap-2 mb-16 text-primary font-bold hover:opacity-80 transition-opacity"
@@ -139,7 +141,7 @@ export default async function ProjectPage({
               </div>
 
               <div
-                className="rounded-3xl overflow-hidden shadow-2xl border-4 relative aspect-[4/3]"
+                className="sketch-frame-2 overflow-hidden shadow-2xl relative aspect-[4/3]"
                 style={{ borderColor: '#63746B' }}
               >
                 {project.image && (
@@ -157,7 +159,7 @@ export default async function ProjectPage({
 
             {hasRichText(project.mission) && (
               <Callout
-                icon={<Target className="w-6 h-6 text-[#F5E6D3]" />}
+                icon={<TargetIcon className="w-6 h-6 text-[#F5E6D3]" />}
                 title="Project Overview"
                 accent={accent}
               >
@@ -221,7 +223,7 @@ export default async function ProjectPage({
             {hasRichText(project.results) && (
               <div className="mt-16">
                 <Callout
-                  icon={<Trophy className="w-6 h-6 text-[#F5E6D3]" />}
+                  icon={<TrophyIcon className="w-6 h-6 text-[#F5E6D3]" />}
                   title="Results"
                   accent={accent}
                 >
@@ -232,12 +234,6 @@ export default async function ProjectPage({
           </div>
         </div>
       </div>
-      <Footer
-        partnersTitle={footer.partnersTitle}
-        copyrightTextBefore={footer.copyrightTextBefore}
-        copyrightTextAfter={footer.copyrightTextAfter}
-        partners={footer.partners}
-      />
     </>
   );
 }
@@ -265,7 +261,7 @@ function Callout({
 }) {
   return (
     <div
-      className="flex items-start gap-4 p-6 rounded-3xl border-4"
+      className="flex items-start gap-4 p-6 rounded-3xl border-3"
       style={{ backgroundColor: `${accent}20`, borderColor: accent }}
     >
       <div

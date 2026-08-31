@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useRouter } from 'next/navigation';
 import { ProjectCard } from './ProjectCard';
 import { IllustrationModal } from './IllustrationModal';
+import { RocketIcon } from './RocketIcon';
 import { DEFAULT_CATEGORY_SCHEME } from '@/lib/category-colors';
 import type { Project, ProjectCategory } from '@/lib/types';
 
@@ -63,7 +64,7 @@ export function Work({ projects }: WorkProps) {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground leading-tight text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground leading-tight flex flex-row items-center justify-center gap-3 sm:gap-4 text-center">
             <span className="fascinate-title relative inline-block mt-2 text-4xl sm:text-5xl">
               <span className="relative z-10">Selected Works</span>
               <motion.span
