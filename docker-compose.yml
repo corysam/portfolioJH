@@ -1,0 +1,29 @@
+name: web
+
+services:
+  strapi:
+    build: ./cms
+    container_name: strapi
+    restart: always
+    env_file: ./cms/.env
+    ports:
+      - "127.0.0.1:1337:1337"
+    volumes:
+      - strapi_uploads:/opt/app/public/uploads
+    networks: [db-net]
+
+  frontend:
+    build: ./web
+    container_name: frontend
+    restart: always
+    env_file: ./web/.env
+    ports:
+      - "127.0.0.1:3000:3000"
+    networks: [db-net]
+
+volumes:
+  strapi_uploads:
+
+networks:
+  db-net:
+    external: true
