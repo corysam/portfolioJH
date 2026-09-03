@@ -2,10 +2,10 @@ name: web
 
 services:
   strapi:
-    build: ./cms
+    build: ./apps/cms
     container_name: strapi
     restart: always
-    env_file: ./cms/.env
+    env_file: ./apps/cms/.env
     ports:
       - "127.0.0.1:1337:1337"
     volumes:
@@ -13,10 +13,10 @@ services:
     networks: [db-net]
 
   frontend:
-    build: ./web
+    build: ./apps/web
     container_name: frontend
     restart: always
-    env_file: ./web/.env
+    env_file: ./apps/web/.env
     ports:
       - "127.0.0.1:3000:3000"
     networks: [db-net]
