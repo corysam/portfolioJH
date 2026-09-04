@@ -13,29 +13,51 @@ const PUBLIC_READ_ACTIONS = [
 ];
 
 export default {
-  register() {},
+  //register() {},
 
-  async bootstrap({ strapi }: { strapi: Core.Strapi }) {
-    const publicRole = await strapi
-      .query('plugin::users-permissions.role')
-      .findOne({ where: { type: 'public' } });
+  register({ strapi }) {
+    const target = process.env.REVALIDATE_URL;
+    const secret = process.env.REVALIDATE_SECRET;
+    if (!target || !secret) return;
 
-    if (!publicRole) {
-      strapi.log.warn('[bootstrap] Public role missing — skipping permissions seed.');
-      return;
-    }
+    const ping = () => {
+      fetch(`${target}?secret=${secret}`, { method: 'POST' })
+        .then((r) => strapi.log.info(`revalidate -> ${r.status}`))
+        .catch((e) => strapi.log.warn(`revalidate failed: ${e.message}`));
+    };
 
-    for (const action of PUBLIC_READ_ACTIONS) {
-      const existing = await strapi
-        .query('plugin::users-permissions.permission')
-        .findOne({ where: { action, role: publicRole.id } });
+    const WRITES = ['create', 'update', 'delete', 'publish', 'unpublish', 'discardDraft'];
 
-      if (existing) continue;
-
-      await strapi.query('plugin::users-permissions.permission').create({
-        data: { action, role: publicRole.id },
-      });
-      strapi.log.info(`[bootstrap] Granted Public: ${action}`);
-    }
+    strapi.documents.use(async (context, next) => {
+      const result = await next();
+      if (WRITES.includes(context.action)) ping();
+      return result;
+    });
   },
+
+  bootstrap() {},
+
+  // async bootstrap({ strapi }: { strapi: Core.Strapi }) {
+  //   const publicRole = await strapi
+  //     .query('plugin::users-permissions.role')
+  //     .findOne({ where: { type: 'public' } });
+
+  //   if (!publicRole) {
+  //     strapi.log.warn('[bootstrap] Public role missing — skipping permissions seed.');
+  //     return;
+  //   }
+
+  //   for (const action of PUBLIC_READ_ACTIONS) {
+  //     const existing = await strapi
+  //       .query('plugin::users-permissions.permission')
+  //       .findOne({ where: { action, role: publicRole.id } });
+
+  //     if (existing) continue;
+
+  //     await strapi.query('plugin::users-permissions.permission').create({
+  //       data: { action, role: publicRole.id },
+  //     });
+  //     strapi.log.info(`[bootstrap] Granted Public: ${action}`);
+  //   }
+  // },
 };
