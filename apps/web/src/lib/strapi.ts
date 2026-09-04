@@ -13,7 +13,7 @@ import type {
   SiteSettings,
 } from './types';
 
-const STRAPI_URL = process.env.STRAPI_URL ?? process.env.NEXT_PUBLIC_STRAPI_URL ?? '';
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL ?? '';
 const STRAPI_TOKEN = process.env.STRAPI_TOKEN ?? '';
 
 export const isStrapiEnabled = (): boolean => STRAPI_URL.length > 0;
