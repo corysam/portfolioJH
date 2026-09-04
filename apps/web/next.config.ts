@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'admin.juliette-herlem.duckdns.org' },
       ...(strapiPattern ? [strapiPattern] : []),
     ],
   },

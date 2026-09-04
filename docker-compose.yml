@@ -13,7 +13,12 @@ services:
     networks: [db-net]
 
   frontend:
-    build: ./apps/web
+    build:
+      context: ./apps/web
+      network: host
+      args:
+        NEXT_PUBLIC_STRAPI_URL: https://admin.juliette-herlem.duckdns.org
+        STRAPI_INTERNAL_URL: http://127.0.0.1:1337
     container_name: frontend
     restart: always
     env_file: ./apps/web/.env
