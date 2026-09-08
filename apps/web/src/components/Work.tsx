@@ -23,10 +23,12 @@ export function Work({ projects }: WorkProps) {
   const activeProjects = projects.filter(p => !p.archived);
 
   // Dynamically get unique categories from active projects, keyed by name so a
-  // category appearing on several projects only yields one pill.
+  // category appearing on several projects only yields one pill, then ranked by
+  // the order picked in Strapi. The lowest-ordered category leads the row and is
+  // the filter selected on load — that's what makes it the "main" one.
   const uniqueCategories = Array.from(
     new Map(activeProjects.flatMap(p => p.categories).map(c => [c.name, c])).values()
-  );
+  ).sort((a, b) => a.order - b.order);
   const categories: ProjectCategory[] = [...uniqueCategories, ALL_CATEGORY];
 
   const [filter, setFilter] = useState<string>(uniqueCategories[0]?.name || 'All');

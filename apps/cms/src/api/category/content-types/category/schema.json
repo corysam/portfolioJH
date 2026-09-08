@@ -19,6 +19,10 @@
       "type": "uid",
       "targetField": "name"
     },
+    "order": {
+      "type": "integer",
+      "default": 999
+    },
     "categoryColor": {
       "type": "string",
       "customField": "plugin::color-picker.color",

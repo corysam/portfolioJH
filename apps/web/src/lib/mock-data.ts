@@ -76,7 +76,7 @@ export const MOCK_PROJECTS: Project[] = [
     id: '1',
     slug: 'green-energy-app',
     title: 'Green Energy App',
-    categories: [{ name: 'UI UX Design', ...DEFAULT_CATEGORY_SCHEME }],
+    categories: [{ name: 'UI UX Design', ...DEFAULT_CATEGORY_SCHEME, order: 1 }],
     image:
       'https://images.unsplash.com/photo-1695548487486-3649bfc8dd9a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY28lMjBmcmllbmRseSUyMHdlYiUyMGRlc2lnbiUyMHN1c3RhaW5hYmxlfGVufDF8fHx8MTc3MzMwMTY0Nnww&ixlib=rb-4.1.0&q=80&w=1080',
     description: 'Mobile app for tracking renewable energy consumption',
@@ -141,7 +141,7 @@ export const MOCK_PROJECTS: Project[] = [
     id: '2',
     slug: 'nature-illustration-series',
     title: 'Nature Illustration Series',
-    categories: [{ name: 'Illustration', ...DEFAULT_CATEGORY_SCHEME }],
+    categories: [{ name: 'Illustration', ...DEFAULT_CATEGORY_SCHEME, order: 3 }],
     image:
       'https://images.unsplash.com/photo-1633081528845-1c0b71d8a010?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib3RhbmljYWwlMjBpbGx1c3RyYXRpb24lMjBhcnR3b3JrfGVufDF8fHx8MTc3MzI3MjEyMXww&ixlib=rb-4.1.0&q=80&w=1080',
   },
@@ -149,7 +149,7 @@ export const MOCK_PROJECTS: Project[] = [
     id: '3',
     slug: 'eco-brand-identity',
     title: 'Eco Brand Identity',
-    categories: [{ name: 'Graphic', ...DEFAULT_CATEGORY_SCHEME }],
+    categories: [{ name: 'Graphic', ...DEFAULT_CATEGORY_SCHEME, order: 2 }],
     image:
       'https://images.unsplash.com/photo-1549718206-ddba4e8391a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuYXR1cmFsJTIwYnJhbmRpbmclMjBwYWNrYWdpbmclMjBncmVlbnxlbnwxfHx8fDE3NzMzMDE2NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080',
     description: 'Complete branding for sustainable fashion company',
@@ -185,7 +185,7 @@ export const MOCK_PROJECTS: Project[] = [
     id: '4',
     slug: 'sustainable-shopping-platform',
     title: 'Sustainable Shopping Platform',
-    categories: [{ name: 'UI UX Design', ...DEFAULT_CATEGORY_SCHEME }],
+    categories: [{ name: 'UI UX Design', ...DEFAULT_CATEGORY_SCHEME, order: 1 }],
     image:
       'https://images.unsplash.com/photo-1725267196915-7700df784ba6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsJTIwYXBwJTIwaW50ZXJmYWNlJTIwZGVzaWdufGVufDF8fHx8MTc3MzMwMTY0N3ww&ixlib=rb-4.1.0&q=80&w=1080',
     description: 'E-commerce platform for eco-friendly products',
@@ -221,7 +221,7 @@ export const MOCK_PROJECTS: Project[] = [
     id: '5',
     slug: 'wildlife-portrait-collection',
     title: 'Wildlife Portrait Collection',
-    categories: [{ name: 'Illustration', ...DEFAULT_CATEGORY_SCHEME }],
+    categories: [{ name: 'Illustration', ...DEFAULT_CATEGORY_SCHEME, order: 3 }],
     image:
       'https://images.unsplash.com/photo-1633081528845-1c0b71d8a010?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib3RhbmljYWwlMjBpbGx1c3RyYXRpb24lMjBhcnR3b3JrfGVufDF8fHx8MTc3MzI3MjEyMXww&ixlib=rb-4.1.0&q=80&w=1080',
   },
@@ -229,7 +229,7 @@ export const MOCK_PROJECTS: Project[] = [
     id: '6',
     slug: 'zero-waste-campaign',
     title: 'Zero Waste Campaign',
-    categories: [{ name: 'Graphic', ...DEFAULT_CATEGORY_SCHEME }],
+    categories: [{ name: 'Graphic', ...DEFAULT_CATEGORY_SCHEME, order: 2 }],
     image:
       'https://images.unsplash.com/photo-1745302133222-076de505778f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxncmVlbiUyMGVudmlyb25tZW50YWwlMjBncmFwaGljJTIwZGVzaWdufGVufDF8fHx8MTc3MzMwMTY0N3ww&ixlib=rb-4.1.0&q=80&w=1080',
     description: 'Social media campaign promoting zero waste lifestyle',
@@ -242,7 +242,7 @@ export const MOCK_PROJECTS: Project[] = [
     id: '7',
     slug: 'carbon-footprint-tracker',
     title: 'Carbon Footprint Tracker',
-    categories: [{ name: 'UI UX Design', ...DEFAULT_CATEGORY_SCHEME }],
+    categories: [{ name: 'UI UX Design', ...DEFAULT_CATEGORY_SCHEME, order: 1 }],
     image:
       'https://images.unsplash.com/photo-1695548487486-3649bfc8dd9a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY28lMjBmcmllbmRseSUyMHdlYiUyMGRlc2lnbiUyMHN1c3RhaW5hYmxlfGVufDF8fHx8MTc3MzMwMTY0Nnww&ixlib=rb-4.1.0&q=80&w=1080',
     description: 'Web app for personal carbon footprint monitoring',
@@ -255,7 +255,7 @@ export const MOCK_PROJECTS: Project[] = [
     id: '8',
     slug: 'botanical-illustration-set',
     title: 'Botanical Illustration Set',
-    categories: [{ name: 'Illustration', ...DEFAULT_CATEGORY_SCHEME }],
+    categories: [{ name: 'Illustration', ...DEFAULT_CATEGORY_SCHEME, order: 3 }],
     image:
       'https://images.unsplash.com/photo-1633081528845-1c0b71d8a010?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib3RhbmljYWwlMjBpbGx1c3RyYXRpb24lMjBhcnR3b3JrfGVufDF8fHx8MTc3MzI3MjEyMXww&ixlib=rb-4.1.0&q=80&w=1080',
   },
@@ -263,7 +263,7 @@ export const MOCK_PROJECTS: Project[] = [
     id: '9',
     slug: 'organic-food-packaging',
     title: 'Organic Food Packaging',
-    categories: [{ name: 'Graphic', ...DEFAULT_CATEGORY_SCHEME }],
+    categories: [{ name: 'Graphic', ...DEFAULT_CATEGORY_SCHEME, order: 2 }],
     image:
       'https://images.unsplash.com/photo-1676474509670-f1978e55fa3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdXN0YWluYWJsZSUyMHByb2R1Y3QlMjBkZXNpZ24lMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzczMzAxNjQ3fDA&ixlib=rb-4.1.0&q=80&w=1080',
     description: 'Sustainable packaging design for organic food brand',

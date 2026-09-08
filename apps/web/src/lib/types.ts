@@ -19,6 +19,12 @@ export interface ProjectCategory {
   color: string;
   /** Badge label color. Picked in Strapi; falls back to DEFAULT_CATEGORY_TEXT_COLOR. */
   textColor: string;
+  /**
+   * Display rank, ascending. Picked in Strapi; falls back to
+   * DEFAULT_CATEGORY_ORDER. The lowest-ordered category is the "main" one: it
+   * leads the filter row in `Work` and is the filter selected on load.
+   */
+  order: number;
 }
 
 export interface Project {

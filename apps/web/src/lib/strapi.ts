@@ -1,4 +1,8 @@
-import { DEFAULT_CATEGORY_COLOR, DEFAULT_CATEGORY_TEXT_COLOR } from './category-colors';
+import {
+  DEFAULT_CATEGORY_COLOR,
+  DEFAULT_CATEGORY_ORDER,
+  DEFAULT_CATEGORY_TEXT_COLOR,
+} from './category-colors';
 import {
   MOCK_ABOUT,
   MOCK_FOOTER,
@@ -78,6 +82,7 @@ const mediaUrl = (media: StrapiMedia): string => absoluteUrl(media?.url);
 
 interface StrapiCategory {
   name: string;
+  order?: number | null;
   categoryColor?: string | null;
   categoryTextColor?: string | null;
 }
@@ -123,6 +128,8 @@ const toProject = (p: StrapiProject): Project => ({
   id: p.documentId ?? String(p.id),
   slug: p.slug,
   title: p.title,
+  // Sorted here rather than in each renderer, so the badge rows and the detail
+  // page accent (categories[0]) all follow the order picked in Strapi.
   categories:
     p.categories
       ?.filter((c) => Boolean(c?.name))
@@ -130,7 +137,9 @@ const toProject = (p: StrapiProject): Project => ({
         name: c.name,
         color: c.categoryColor || DEFAULT_CATEGORY_COLOR,
         textColor: c.categoryTextColor || DEFAULT_CATEGORY_TEXT_COLOR,
-      })) ?? [],
+        order: c.order ?? DEFAULT_CATEGORY_ORDER,
+      }))
+      .sort((a, b) => a.order - b.order) ?? [],
   image: mediaUrl(p.image),
   description: p.description,
   buttonTitle: p.buttonTitle,
