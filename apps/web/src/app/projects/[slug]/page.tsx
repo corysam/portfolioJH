@@ -110,16 +110,8 @@ export default async function ProjectPage({
                   )}
                   {project.role && <DetailRow label="Role" value={project.role} />}
                   {project.equipe && <DetailRow label="Équipe" value={project.equipe} />}
-                  {clientNames.length > 0 && (
-                    <div>
-                      <p className="text-xs uppercase tracking-wider font-semibold text-[#63746b]">
-                        {clientNames.length > 1 ? 'Clients' : 'Client'}
-                      </p>
-                      {clientNames.map((c) => (
-                        <p key={c} className="font-semibold text-[#f5e6d3]">{c}</p>
-                      ))}
-                    </div>
-                  )}
+                  {clientNames.length > 0 && 
+                  (<DetailRow label={clientNames.length > 1 ? 'Clients' : 'Client'} value={clientNames.join(', ')} />)}
                   {project.software?.length ? (
                     <DetailRow label="Software" value={project.software.join(', ')} />
                   ) : null}
