@@ -55,7 +55,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning className={`${spaceGrotesk.variable} ${fascinate.variable}`}>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <div className="min-h-screen bg-neutral-50 dark:bg-[#001616] text-neutral-900 dark:text-neutral-100 transition-colors duration-500">
+          {/*
+            `overflow-x-clip` keeps the slide-in animations from widening the page:
+            Motion parks `whileInView` elements at an x offset until they scroll
+            into view, so the document is briefly wider than the screen. On mobile
+            that widens the *layout* viewport, and `position: fixed` resolves
+            against it — the header stretches past the screen and its right gutter
+            ends up off-screen, leaving the menu button flush with the edge.
+            It has to sit here rather than on html/body: overflow set on those
+            propagates to the viewport instead of clipping it. `clip` over
+            `hidden` so no scroll container is created and `position: sticky`
+            keeps working.
+          */}
+          <div className="min-h-screen overflow-x-clip bg-neutral-50 dark:bg-[#001616] text-neutral-900 dark:text-neutral-100 transition-colors duration-500">
             {children}
             <CursorTrail size={9} lifetime={600} density={0.020} zIndex={9999} />
           </div>

@@ -232,7 +232,7 @@ export function Hero({ hero, availableForWork }: HeroProps) {
         </div>
 
         {/* Tablet illustration - medium height, visible between 640px and 1023px */}
-        <div className={`hidden sm:flex lg:hidden relative w-full h-[500px] bg-transparent dark:bg-transparent mx-6 sm:mx-8 items-center justify-center overflow-visible ${hero.imageTabletUrl ? '' : 'border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
+        <div className={`hidden sm:flex lg:hidden relative h-[500px] bg-transparent dark:bg-transparent mx-6 sm:mx-8 items-center justify-center overflow-visible ${hero.imageTabletUrl ? '' : 'border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
           {hero.imageTabletUrl && (
             <Image
               src={hero.imageTabletUrl}
@@ -245,7 +245,7 @@ export function Hero({ hero, availableForWork }: HeroProps) {
         </div>
 
         {/* Mobile illustration - taller version, visible only on small screens < 640px */}
-        <div className={`flex sm:hidden w-full h-[600px] bg-transparent dark:bg-transparent mx-6 items-center justify-center overflow-visible ${hero.imageMobileUrl ? '' : 'border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
+        <div className={`flex sm:hidden h-[600px] bg-transparent dark:bg-transparent mx-6 items-center justify-center overflow-visible ${hero.imageMobileUrl ? '' : 'border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
           {hero.imageMobileUrl && (
             <Image
               src={hero.imageMobileUrl}
