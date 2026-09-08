@@ -6,6 +6,7 @@ const PUBLIC_READ_ACTIONS = [
   'api::category.category.find',
   'api::category.category.findOne',
   'api::about.about.find',
+  'api::site-config.site-config.find',
   'api::site-setting.site-setting.find',
   'api::hero.hero.find',
   'api::header.header.find',

@@ -25,10 +25,7 @@ export default async function HomePage() {
       </div>
       <div id="about">
         <AboutMe
-          title={about.title}
-          subtitle={about.subtitle}
           description={about.description}
-          tag={about.tag}
           tags={about.tags}
           cvUrl={about.cvUrl}
           photoUrl={about.photoUrl}

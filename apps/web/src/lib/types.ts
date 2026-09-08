@@ -42,11 +42,19 @@ export interface Project {
   sections?: ProjectSection[];
 }
 
-export interface AboutData {
+/** Site-wide variables that aren't tied to a single page section. */
+export interface SiteConfig {
+  /** Leading half of the document title, e.g. "Designing for a". */
   title: string;
+  /** Trailing half of the title; also used alone as the OpenGraph siteName. */
   subtitle: string;
+  metaDescription: string;
+  /** Absolute URL of the favicon uploaded in Strapi; '' when unset. */
+  faviconUrl: string;
+}
+
+export interface AboutData {
   description: string;
-  tag: string;
   tags: string[];
   cvUrl: string;
   photoUrl: string;

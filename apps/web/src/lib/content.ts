@@ -6,6 +6,7 @@ import {
   MOCK_HEADER,
   MOCK_HERO,
   MOCK_PROJECTS,
+  MOCK_SITE_CONFIG,
   MOCK_SITE_SETTINGS,
 } from './mock-data';
 import {
@@ -15,10 +16,19 @@ import {
   fetchHeroFromStrapi,
   fetchProjectFromStrapi,
   fetchProjectsFromStrapi,
+  fetchSiteConfigFromStrapi,
   fetchSiteSettingsFromStrapi,
   isStrapiEnabled,
 } from './strapi';
-import type { AboutData, FooterData, HeaderData, HeroData, Project, SiteSettings } from './types';
+import type {
+  AboutData,
+  FooterData,
+  HeaderData,
+  HeroData,
+  Project,
+  SiteConfig,
+  SiteSettings,
+} from './types';
 
 /**
  * Single source of truth for content. When STRAPI_URL is set we hit the CMS;
@@ -48,6 +58,16 @@ export async function getProject(slug: string): Promise<Project | null> {
   } catch (err) {
     console.error(`[content] getProject(${slug}) failed, falling back to mock data:`, err);
     return MOCK_PROJECTS.find((p) => p.slug === slug && !p.archived) ?? null;
+  }
+}
+
+export async function getSiteConfig(): Promise<SiteConfig> {
+  if (!isStrapiEnabled()) return MOCK_SITE_CONFIG;
+  try {
+    return await fetchSiteConfigFromStrapi();
+  } catch (err) {
+    console.error('[content] getSiteConfig failed, falling back to mock data:', err);
+    return MOCK_SITE_CONFIG;
   }
 }
 

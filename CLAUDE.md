@@ -41,20 +41,25 @@ Strapi 5 (TypeScript), SQLite via `better-sqlite3`. Admin panel at `http://local
 
 This lets `npm run dev:web` work standalone without Strapi running. With the full monorepo `npm run dev`, both boot and the web app hits the local Strapi.
 
-The shared `Project`/`AboutData`/`SiteSettings` types live in [apps/web/src/lib/types.ts](apps/web/src/lib/types.ts). The Strapi-shaped response is mapped to these types inside `strapi.ts` — if the Strapi schema changes, that's the only consumer-side file to update.
+The shared `Project`/`AboutData`/`SiteConfig`/`SiteSettings` types live in [apps/web/src/lib/types.ts](apps/web/src/lib/types.ts). The Strapi-shaped response is mapped to these types inside `strapi.ts` — if the Strapi schema changes, that's the only consumer-side file to update.
 
-The two singleton fetchers (`fetchAboutFromStrapi`, `fetchSiteSettingsFromStrapi`) defensively fall back to mock data when Strapi returns `null` (i.e. the singleton hasn't been saved yet in the admin).
+The singleton fetchers (`fetchSiteConfigFromStrapi`, `fetchAboutFromStrapi`, `fetchSiteSettingsFromStrapi`, …) defensively fall back to mock data when Strapi returns `null` (i.e. the singleton hasn't been saved yet in the admin).
+
+**Site-wide vs. section content.** Anything that isn't tied to one page section — document title, OpenGraph `siteName`, meta description, favicon — lives on the `site-config` singleton (`getSiteConfig()`), consumed by `generateMetadata` in [apps/web/src/app/layout.tsx](apps/web/src/app/layout.tsx). Don't add that kind of field to a section type like `about`. Note the confusingly-named `site-setting` singleton is *not* this — it is the Contact section (displayName "4. Get in touch").
 
 ## Strapi content types
 
-All four content types are pre-stamped as JSON so Strapi boots ready. Schemas live under [apps/cms/src/api/](apps/cms/src/api/) (one folder per content-type) with the schema, controller, route, and service files. Shared components live under [apps/cms/src/components/shared/](apps/cms/src/components/shared/).
+All content types are pre-stamped as JSON so Strapi boots ready. Schemas live under [apps/cms/src/api/](apps/cms/src/api/) (one folder per content-type) with the schema, controller, route, and service files. Shared components live under [apps/cms/src/components/shared/](apps/cms/src/components/shared/).
 
 - `project` (collection): title, slug (uid from title), description, buttonTitle, buttonUrl, archived, date, duration, mission, results, image (media), categories (relation → category, manyToMany), software/clientName (repeatable `shared.named-item`), phases (repeatable `shared.phase`), sections (repeatable `shared.section`).
 - `category` (collection): name, slug, `categoryColor` + `categoryTextColor` (both `plugin::color-picker.color` custom fields — the badge background/border and its label color, one of each per category), projects (manyToMany back-relation).
-- `about` (single): title, subtitle, description, tag, tags (repeatable `shared.tag-label`), cv (media file), availableForWork.
-- `site-setting` (single): email, phone, linkedinUrl, partners (repeatable `shared.partner`). URL is `/api/site-settings` (Strapi pluralizes via `pluralName`).
+- `site-config` (single, displayName "0. Site settings"): title, subtitle, metaDescription, favicon (media). Site-wide metadata only — feeds `generateMetadata` in `layout.tsx`.
+- `about` (single, "3. About Me"): description, tags (repeatable `shared.tag-label`), cv (media file), photo (media), availableForWork.
+- `site-setting` (single, "4. Get in touch"): title, subtitle, email, phone, linkedinUrl — the Contact section, despite the name.
 
-[apps/cms/src/index.ts](apps/cms/src/index.ts) is a bootstrap hook that grants the Public role `find` + `findOne` permissions on every content-type the web app reads. It's idempotent — safe to re-run.
+Single-type REST paths use `singularName`, not the plural: `/api/site-config`, `/api/about`, `/api/site-setting`.
+
+[apps/cms/src/index.ts](apps/cms/src/index.ts) holds `PUBLIC_READ_ACTIONS` — the Public-role `find`/`findOne` permissions every content-type the web app reads needs. The `bootstrap()` hook that applied them is currently commented out, so **after adding a content type you must enable its `find` permission by hand** in Strapi admin → Settings → Users & Permissions → Roles → Public. Keep the list in sync anyway.
 
 CORS is configured in [apps/cms/config/middlewares.ts](apps/cms/config/middlewares.ts) to allow `http://localhost:3000` and `WEB_PUBLIC_URL` (set this env var in production).
 

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Fascinate_Inline, Space_Grotesk } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { getAbout } from '@/lib/content';
+import { getSiteConfig } from '@/lib/content';
 import './globals.css';
 import CursorTrail from '@/components/CursorTrail';
 
@@ -22,10 +22,10 @@ const fascinate = Fascinate_Inline({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const about = await getAbout();
-  const title = `${about.title ?? ''} ${about.subtitle ?? ''}`.trim();
-  const description = about.description?.split('\n\n')[0] ?? '';
-  const siteName = about.subtitle ?? '';
+  const config = await getSiteConfig();
+  const title = `${config.title ?? ''} ${config.subtitle ?? ''}`.trim();
+  const description = config.metaDescription ?? '';
+  const siteName = config.subtitle ?? '';
   return {
     metadataBase: new URL(siteUrl),
     title: {
@@ -33,6 +33,8 @@ export async function generateMetadata(): Promise<Metadata> {
       template: siteName ? `%s · ${siteName}` : '%s',
     },
     description,
+    // Omitted when unset so Next falls back to its default icon lookup.
+    ...(config.faviconUrl ? { icons: { icon: config.faviconUrl } } : {}),
     openGraph: {
       type: 'website',
       title,

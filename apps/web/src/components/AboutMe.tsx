@@ -5,16 +5,13 @@ import { Download, Sprout } from 'lucide-react';
 import Image from 'next/image';
 
 interface AboutMeProps {
-  title: string;
-  subtitle: string;
   description: string;
-  tag: string;
   tags: string[];
   cvUrl: string;
   photoUrl: string;
 }
 
-export function AboutMe({ title, subtitle, description, tag, tags, cvUrl, photoUrl }: AboutMeProps) {
+export function AboutMe({ description, tags, cvUrl, photoUrl }: AboutMeProps) {
   return (
     <div className="py-20 md:py-32 relative">
       {/* Decorative organic shapes */}

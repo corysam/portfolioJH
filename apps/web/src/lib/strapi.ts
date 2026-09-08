@@ -1,5 +1,12 @@
 import { DEFAULT_CATEGORY_COLOR, DEFAULT_CATEGORY_TEXT_COLOR } from './category-colors';
-import { MOCK_ABOUT, MOCK_FOOTER, MOCK_HEADER, MOCK_HERO, MOCK_SITE_SETTINGS } from './mock-data';
+import {
+  MOCK_ABOUT,
+  MOCK_FOOTER,
+  MOCK_HEADER,
+  MOCK_HERO,
+  MOCK_SITE_CONFIG,
+  MOCK_SITE_SETTINGS,
+} from './mock-data';
 import type {
   AboutData,
   FooterData,
@@ -10,6 +17,7 @@ import type {
   ProjectPhase,
   ProjectSection,
   RichTextContent,
+  SiteConfig,
   SiteSettings,
 } from './types';
 
@@ -170,11 +178,29 @@ export async function fetchProjectFromStrapi(slug: string): Promise<Project | nu
   return first ? toProject(first) : null;
 }
 
+interface StrapiSiteConfig {
+  title?: string;
+  subtitle?: string;
+  metaDescription?: string;
+  favicon?: StrapiMedia;
+}
+
+export async function fetchSiteConfigFromStrapi(): Promise<SiteConfig> {
+  const res = await strapiFetch<StrapiSiteConfig | null>('/site-config?populate=*', {
+    allowNotFound: true,
+  });
+  const c = res.data;
+  if (!c) return MOCK_SITE_CONFIG;
+  return {
+    title: c.title ?? MOCK_SITE_CONFIG.title,
+    subtitle: c.subtitle ?? MOCK_SITE_CONFIG.subtitle,
+    metaDescription: c.metaDescription ?? MOCK_SITE_CONFIG.metaDescription,
+    faviconUrl: mediaUrl(c.favicon),
+  };
+}
+
 interface StrapiAbout {
-  title: string;
-  subtitle: string;
   description: string;
-  tag: string;
   tags?: { label: string }[];
   cv?: StrapiMedia;
   photo?: StrapiMedia;
@@ -186,10 +212,7 @@ export async function fetchAboutFromStrapi(): Promise<AboutData> {
   const a = res.data;
   if (!a) return MOCK_ABOUT;
   return {
-    title: a.title,
-    subtitle: a.subtitle,
     description: a.description,
-    tag: a.tag,
     tags: a.tags?.map((t) => t.label) ?? [],
     cvUrl: mediaUrl(a.cv),
     photoUrl: mediaUrl(a.photo),

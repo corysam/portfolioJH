@@ -1,13 +1,26 @@
 import { DEFAULT_CATEGORY_SCHEME } from './category-colors';
-import type { AboutData, FooterData, HeaderData, HeroData, Project, SiteSettings } from './types';
+import type {
+  AboutData,
+  FooterData,
+  HeaderData,
+  HeroData,
+  Project,
+  SiteConfig,
+  SiteSettings,
+} from './types';
 
-export const MOCK_ABOUT: AboutData = {
+export const MOCK_SITE_CONFIG: SiteConfig = {
   title: 'Designing for a',
   subtitle: 'Sustainable Future',
+  metaDescription:
+    "Hi, I'm a passionate UI/UX designer with a deep love for nature and sustainability.",
+  faviconUrl: '',
+};
+
+export const MOCK_ABOUT: AboutData = {
   description: `Hi, I'm a passionate UI/UX designer with a deep love for nature and sustainability. My mission is to create beautiful, intuitive digital experiences that not only delight users but also promote environmental consciousness.
 
 With over 5 years of experience in the design industry, I specialize in creating eco-friendly brand identities, user-centered interfaces, and engaging visual content. Every project I work on is approached with mindfulness and respect for our planet.`,
-  tag: 'UI/UX Designer & Eco Advocate',
   tags: ['UI/UX Design', 'Branding', 'Illustration', 'Sustainability', 'Web Design'],
   cvUrl: '',
   photoUrl: '',

@@ -11,18 +11,8 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true
-    },
-    "subtitle": {
-      "type": "string"
-    },
     "description": {
       "type": "text"
-    },
-    "tag": {
-      "type": "string"
     },
     "tags": {
       "type": "component",
