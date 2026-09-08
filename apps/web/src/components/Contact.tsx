@@ -3,7 +3,8 @@
 import { CheckCircle, Linkedin, Mail, Phone, Send, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useActionState } from 'react';
-import { initialContactState, submitContact } from '@/app/actions/contact';
+import { submitContact } from '@/app/actions/contact';
+import { initialContactState } from '@/app/actions/contact-state';
 
 interface ContactProps {
   title: string;

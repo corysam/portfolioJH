@@ -1,11 +1,6 @@
 'use server';
 
-type ContactState =
-  | { status: 'idle' }
-  | { status: 'success' }
-  | { status: 'error'; error: string };
-
-export const initialContactState: ContactState = { status: 'idle' };
+import type { ContactState } from './contact-state';
 
 export async function submitContact(_: ContactState, formData: FormData): Promise<ContactState> {
   const name = String(formData.get('name') ?? '').trim();
@@ -59,5 +54,3 @@ export async function submitContact(_: ContactState, formData: FormData): Promis
 
   return { status: 'success' };
 }
-
-export type { ContactState };
