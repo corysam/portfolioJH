@@ -118,8 +118,7 @@ export function ProjectCard({
               style={{ color: '#94B298' }}
               whileHover={{ x: 5 }}
             >
-              <span>View Project</span>
-              <span>→</span>
+              {project.categories.some((c) => c.name === 'Illustration') ? <span>View Illustration</span> : <span>View Project</span>}
             </motion.div>
           </div>
         </div>
