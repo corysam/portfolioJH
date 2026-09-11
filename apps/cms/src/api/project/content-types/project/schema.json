@@ -44,33 +44,6 @@
       "type": "blocks"
     },
     "image": {
-      "pluginOptions": {
-        "imageValidation": {
-          "rules": [
-            {
-              "aspectRatio": {
-                "width": 4,
-                "height": 3
-              },
-              "minWidth": 1600
-            },
-            {
-              "aspectRatio": {
-                "width": 1,
-                "height": 1
-              },
-              "minWidth": 1200
-            },
-            {
-              "aspectRatio": {
-                "width": 3,
-                "height": 4
-              },
-              "minWidth": 1200
-            }
-          ]
-        }
-      },
       "type": "media",
       "multiple": false,
       "required": false,

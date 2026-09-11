@@ -93,8 +93,6 @@ All under [apps/web/src/components/](apps/web/src/components/):
 
 Use `next/image`, never raw `<img>` for content images. Remote hosts must be allow-listed in [apps/web/next.config.ts](apps/web/next.config.ts) → `images.remotePatterns`. The Strapi pattern is built from `NEXT_PUBLIC_STRAPI_URL` / `STRAPI_URL` and scoped to `/uploads/**`. Currently allow-listed: `images.unsplash.com` plus whatever the Strapi env points at.
 
-**Image dimensions are enforced per media field.** `@tarkashilpa/strapi-plugin-image-dimension-validation` reads `pluginOptions.imageValidation` from each field's `schema.json` (aspect ratio + minimum width, ±2% tolerance) and rejects non-conforming images on save. The rules, the containers they were derived from, and what is deliberately left unenforced are in [docs/media-sizes.md](docs/media-sizes.md). If you change an image container's `aspect-*` / `object-*` classes, update the matching rule in `schema.json` and that doc.
-
 ## First-boot setup (after `npm install`)
 
 1. `npm run dev` from the root.
