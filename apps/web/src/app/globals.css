@@ -236,6 +236,29 @@ html {
   font-family: var(--font-fascinate), cursive;
 }
 
+/* Animated highlight bar behind a title (hero subtitle + section headings).
+   Painted as a background image so it hugs the glyphs and, with
+   box-decoration-break, gets its own bar per line when the title wraps.
+   The SVG carries the rounded ends a linear-gradient can't.
+   Reveal it by animating background-size from `0% 1rem` to `100% 1rem`.
+   --title-highlight-offset lifts the bar off the bottom of the text box:
+   raise it to sit deeper in the glyphs, lower it to sit closer to a baseline.
+   Its default lives in the var() fallback, not in this rule: these styles are
+   unlayered, so they would outrank a per-element `[--title-highlight-offset:…]`
+   Tailwind utility and silently pin every bar to the same offset. */
+.title-highlight {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20320%2016'%20preserveAspectRatio='none'%3E%3Crect%20width='320'%20height='16'%20rx='4'%20fill='%23A0C4A1'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left bottom var(--title-highlight-offset, 0.06em);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.dark .title-highlight,
+.title-highlight-solid {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20320%2016'%20preserveAspectRatio='none'%3E%3Crect%20width='320'%20height='16'%20rx='4'%20fill='%235A7A5E'/%3E%3C/svg%3E");
+}
+
 /* Custom decorative shapes */
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }

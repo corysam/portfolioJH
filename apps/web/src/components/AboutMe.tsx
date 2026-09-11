@@ -104,14 +104,15 @@ export function AboutMe({ description, tags, cvUrl, photoUrl }: AboutMeProps) {
             >
               <h2 className="fascinate-title text-4xl sm:text-5xl leading-tight">
                 <span className="relative inline-block">
-                  <span className="relative z-10 text-foreground">About Me</span>
                   <motion.span
-                    initial={{ width: 0 }}
-                    whileInView={{ width: '100%' }}
+                    initial={{ backgroundSize: '0% 1rem' }}
+                    whileInView={{ backgroundSize: '100% 1rem' }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.7, duration: 0.8 }}
-                    className="absolute bottom-0 left-0 h-4 bg-[#A0C4A1] dark:bg-[#5A7A5E] -z-0 rounded"
-                  />
+                    className="title-highlight text-foreground"
+                  >
+                    About Me
+                  </motion.span>
                 </span>
               </h2>
               

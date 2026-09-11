@@ -68,14 +68,15 @@ export function Work({ projects }: WorkProps) {
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground leading-tight flex flex-row items-center justify-center gap-3 sm:gap-4 text-center">
             <span className="fascinate-title relative inline-block mt-2 text-4xl sm:text-5xl">
-              <span className="relative z-10">Selected Works</span>
               <motion.span
-                initial={{ width: 0 }}
-                whileInView={{ width: '100%' }}
+                initial={{ backgroundSize: '0% 1rem' }}
+                whileInView={{ backgroundSize: '100% 1rem' }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="absolute bottom-0 left-0 h-4 bg-[#A0C4A1] dark:bg-[#5A7A5E] -z-0 rounded"
-              />
+                className="title-highlight"
+              >
+                Selected Works
+              </motion.span>
             </span>
           </h1>
         </motion.div>

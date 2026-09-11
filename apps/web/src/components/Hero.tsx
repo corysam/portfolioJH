@@ -148,21 +148,19 @@ export function Hero({ hero, availableForWork }: HeroProps) {
             className="mb-8 text-center lg:text-left"
           >
 
-            <h1 className="fascinate-title text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-none">
-              {hero.title}
+            <h1 className="fascinate-title font-bold text-foreground leading-none">
+              <span className="block text-4xl sm:text-5xl lg:text-6xl">{hero.title}</span>
               {hero.subtitle && (
-                <>
-                  {' '}
-                  <span className="relative inline-block">
-                    <span className="relative z-10">{hero.subtitle}</span>
-                    <motion.span
-                      initial={{ width: 0 }}
-                      animate={{ width: '100%' }}
-                      transition={{ delay: 1, duration: 0.8 }}
-                      className="absolute bottom-0 left-0 h-4 bg-[#A0C4A1] dark:bg-[#5A7A5E] z-0 rounded"
-                    />
-                  </span>
-                </>
+                <span className="block text-5xl sm:text-6xl lg:text-7xl mt-2">
+                  <motion.span
+                    initial={{ backgroundSize: '0% 1rem' }}
+                    animate={{ backgroundSize: '100% 1rem' }}
+                    transition={{ delay: 1, duration: 0.8 }}
+                    className="title-highlight [--title-highlight-offset:0.14em]"
+                  >
+                    {hero.subtitle}
+                  </motion.span>
+                </span>
               )}
             </h1>
           </motion.div>

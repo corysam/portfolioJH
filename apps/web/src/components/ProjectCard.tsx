@@ -119,6 +119,7 @@ export function ProjectCard({
               whileHover={{ x: 5 }}
             >
               {project.categories.some((c) => c.name === 'Illustration') ? <span>View Illustration</span> : <span>View Project</span>}
+              <span>→</span>
             </motion.div>
           </div>
         </div>

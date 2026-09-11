@@ -83,7 +83,7 @@ export default async function ProjectPage({
             </Link>
 
             <div className="grid lg:grid-cols-[1fr_1.5fr] gap-8 mb-16 items-start">
-              <div className="space-y-6">
+              <div className="space-y-6 lg:pr-20">
                 {project.categories.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     {project.categories.map((category) => (
@@ -102,7 +102,7 @@ export default async function ProjectPage({
                   </div>
                 )}
 
-                <h1 className="text-[#F5E6D3] text-[32px] font-bold leading-tight">{project.title}</h1>
+                <h1 className="text-[#F5E6D3] text-[32px] font-bold leading-tight text-balance">{project.title}</h1>
 
                 <div className="space-y-3">
                   {project.dateAndDuration && (
