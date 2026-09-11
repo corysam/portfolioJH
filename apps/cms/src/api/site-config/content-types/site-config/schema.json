@@ -22,6 +22,19 @@
       "type": "text"
     },
     "favicon": {
+      "pluginOptions": {
+        "imageValidation": {
+          "rules": [
+            {
+              "aspectRatio": {
+                "width": 1,
+                "height": 1
+              },
+              "minWidth": 512
+            }
+          ]
+        }
+      },
       "type": "media",
       "multiple": false,
       "allowedTypes": [

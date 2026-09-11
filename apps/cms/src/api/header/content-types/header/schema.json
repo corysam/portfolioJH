@@ -16,6 +16,19 @@
       "required": true
     },
     "logo": {
+      "pluginOptions": {
+        "imageValidation": {
+          "rules": [
+            {
+              "aspectRatio": {
+                "width": 1,
+                "height": 1
+              },
+              "minWidth": 256
+            }
+          ]
+        }
+      },
       "type": "media",
       "multiple": false,
       "allowedTypes": [
