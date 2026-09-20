@@ -100,7 +100,7 @@ export function Header({ header, onNavigate }: HeaderProps) {
                   whileHover={{ scale: 1.1, rotate: 180 }}
                   whileTap={{ scale: 0.9 }}
                   transition={{ duration: 0.6 }}
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center text-[#000000] dark:text-[#F5E6D3] shadow-lg tracking-tighter text-[28px] overflow-hidden"
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center text-[#000000] dark:text-[#F5E6D3] tracking-tighter text-[28px] overflow-hidden"
                 >
                   {header.logoUrl ? (
                     <Image
