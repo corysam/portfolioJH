@@ -229,15 +229,16 @@ export function Hero({ hero, availableForWork }: HeroProps) {
           )}
         </div>
 
-        {/* Tablet illustration - pinned to the bottom-right corner, visible between 640px and 1023px */}
-        <div className={`hidden sm:block lg:hidden relative w-full h-[500px] ${hero.imageTabletUrl ? '' : 'border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
+        {/* Tablet illustration - full width at its natural ratio, sitting on the bottom edge (640px-1023px) */}
+        <div className={`hidden sm:block lg:hidden w-full ${hero.imageTabletUrl ? '' : 'h-[500px] border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
           {hero.imageTabletUrl && (
             <Image
               src={hero.imageTabletUrl}
               alt=""
-              fill
+              width={0}
+              height={0}
               sizes="100vw"
-              className="object-contain object-[right_bottom]"
+              className="block w-full h-auto"
             />
           )}
         </div>
@@ -265,7 +266,7 @@ export function Hero({ hero, availableForWork }: HeroProps) {
         }}
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#63746B] hover:text-[#5A7A5E] transition-colors z-20"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary hover:text-primary/80 transition-colors z-20"
       >
         <ArrowDown className="w-6 h-6" />
       </motion.button>
