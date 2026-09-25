@@ -70,14 +70,14 @@ export function AboutMe({ description, tags, cvUrl, photoUrl }: AboutMeProps) {
                 whileHover={{ rotate: -2, scale: 1.02 }}
                 className="relative rounded-3xl h-full"
               >
-                <div className="min-h-[600px] h-full bg-neutral-300 dark:bg-[#001616] relative rounded-3xl overflow-hidden">
+                <div className="aspect-4/5 md:aspect-auto md:min-h-[600px] md:h-full bg-neutral-300 dark:bg-[#001616] relative rounded-3xl overflow-hidden">
                   {photoUrl ? (
                     <Image
                       src={photoUrl}
                       alt=""
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover rounded-3xl"
+                      className="object-contain rounded-3xl"
                     />
                   ) : (
                     <div className="w-full h-full dark:bg-transparent bg-transparent border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30 flex items-center justify-center rounded-3xl"></div>

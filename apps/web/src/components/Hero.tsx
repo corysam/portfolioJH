@@ -215,8 +215,8 @@ export function Hero({ hero, availableForWork }: HeroProps) {
         transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
         className="w-full lg:absolute lg:bottom-0 lg:right-0 lg:w-[65%] lg:h-[95vh] relative z-0"
       >
-        {/* Desktop illustration - hidden on small screens */}
-        <div className={`hidden lg:flex relative z-0 w-full h-full bg-transparent dark:bg-transparent mx-6 sm:mx-8 lg:mx-0 items-center justify-center overflow-visible ${hero.imageDesktopUrl ? '' : 'border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
+        {/* Desktop illustration - pinned to the bottom-right corner, never cropped */}
+        <div className={`hidden lg:block relative w-full h-full ${hero.imageDesktopUrl ? '' : 'border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
           {hero.imageDesktopUrl && (
             <Image
               src={hero.imageDesktopUrl}
@@ -224,33 +224,34 @@ export function Hero({ hero, availableForWork }: HeroProps) {
               fill
               priority
               sizes="65vw"
-              className="object-contain"
+              className="object-contain object-[right_bottom]"
             />
           )}
         </div>
 
-        {/* Tablet illustration - medium height, visible between 640px and 1023px */}
-        <div className={`hidden sm:flex lg:hidden relative h-[500px] bg-transparent dark:bg-transparent mx-6 sm:mx-8 items-center justify-center overflow-visible ${hero.imageTabletUrl ? '' : 'border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
+        {/* Tablet illustration - pinned to the bottom-right corner, visible between 640px and 1023px */}
+        <div className={`hidden sm:block lg:hidden relative w-full h-[500px] ${hero.imageTabletUrl ? '' : 'border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
           {hero.imageTabletUrl && (
             <Image
               src={hero.imageTabletUrl}
               alt=""
               fill
               sizes="100vw"
-              className="object-contain"
+              className="object-contain object-[right_bottom]"
             />
           )}
         </div>
 
-        {/* Mobile illustration - taller version, visible only on small screens < 640px */}
-        <div className={`flex sm:hidden h-[600px] bg-transparent dark:bg-transparent mx-6 items-center justify-center overflow-visible ${hero.imageMobileUrl ? '' : 'border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
+        {/* Mobile illustration - full width at its natural ratio, sitting on the bottom edge (< 640px) */}
+        <div className={`block sm:hidden w-full ${hero.imageMobileUrl ? '' : 'h-[600px] border-2 border-dashed border-neutral-300/30 dark:border-neutral-600/30'}`}>
           {hero.imageMobileUrl && (
             <Image
               src={hero.imageMobileUrl}
               alt=""
-              fill
+              width={0}
+              height={0}
               sizes="100vw"
-              className="object-contain"
+              className="block w-full h-auto"
             />
           )}
         </div>
