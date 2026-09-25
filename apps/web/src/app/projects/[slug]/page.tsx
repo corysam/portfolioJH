@@ -253,19 +253,19 @@ function Callout({
 }) {
   return (
     <div
-      className="flex items-start gap-4 p-6 rounded-3xl border-3"
+      className="p-6 rounded-3xl border-3"
       style={{ backgroundColor: `${accent}20`, borderColor: accent }}
     >
-      <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-        style={{ backgroundColor: accent }}
-      >
-        {icon}
+      <div className="flex items-center gap-4 mb-4">
+        <div
+          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+          style={{ backgroundColor: accent }}
+        >
+          {icon}
+        </div>
+        <h2 className="text-[20px] font-bold text-[#F5E6D3]">{title}</h2>
       </div>
-      <div>
-        <h2 className="text-[20px] font-bold mb-3 text-[#F5E6D3]">{title}</h2>
-        <div className="leading-relaxed text-[#D4D0BF]">{children}</div>
-      </div>
+      <div className="leading-relaxed text-[#D4D0BF]">{children}</div>
     </div>
   );
 }
